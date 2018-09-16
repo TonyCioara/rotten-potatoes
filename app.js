@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 var exphbs = require('express-handlebars');
 
-mongoose.connect('mongodb://localhost/rotten-potatoes', { useMongoClient: true });
+// mongoose.connect('mongodb://localhost/rotten-potatoes', { useMongoClient: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes');
 
 // const Review = require('./models/review')
 
