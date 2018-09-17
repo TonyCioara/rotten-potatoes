@@ -16,19 +16,20 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(methodOverride('_method'));
 
-const Review = require('./models/review');
+// const Review = require('./models/review');
 const reviews = require('./controllers/reviews')(app);
 const comments = require('./controllers/comments')(app);
+const movies = require('./controllers/movies')(app);
 
-app.get('/', (req, res) => {
-    Review.find()
-    .then(reviews => {
-        res.render('reviews-index', {reviews: reviews});
-    })
-    .catch(err => {
-        console.log('ERROR: ', err);
-    })
-})
+// app.get('/', (req, res) => {
+//     Review.find()
+//     .then(reviews => {
+//         res.render('reviews-index', {reviews: reviews});
+//     })
+//     .catch(err => {
+//         console.log('ERROR: ', err);
+//     })
+// })
 
 app.listen(process.env.PORT || 3000, function(){
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
