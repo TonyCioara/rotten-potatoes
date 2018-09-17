@@ -18,6 +18,7 @@ app.use(methodOverride('_method'));
 
 const Review = require('./models/review');
 const reviews = require('./controllers/reviews')(app);
+const comments = require('./controllers/comments')(app);
 
 app.get('/', (req, res) => {
     Review.find()
