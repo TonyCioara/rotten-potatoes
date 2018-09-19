@@ -52,4 +52,14 @@ module.exports = function(app) {
                 console.log(err.message);
         });
     });
+
+    app.get('/reviews', (req, res) => {
+        Review.find()
+        .then(reviews => {
+            res.render('reviews-index', {reviews: reviews});
+        })
+        .catch(err => {
+            console.log('ERROR: ', err);
+        })
+    })
 }
