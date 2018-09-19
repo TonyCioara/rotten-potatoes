@@ -8,10 +8,6 @@ const ReviewSchema = new mongoose.Schema ({
     createAt: {type: Date},
     updateAt: {type: Date},
 
-    title: {
-        type: String
-        // required: true
-    },
     description: {
         type: String
     },
@@ -20,6 +16,10 @@ const ReviewSchema = new mongoose.Schema ({
     },
     rating: {
         type: Number
+    },
+    movieId: {
+        type: String,
+        required: true
     }
 });
 

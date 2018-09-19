@@ -1,6 +1,6 @@
 <!-- reviews-show.handlebars -->
 
-<a href="/">Back to Home</a>
+<a href="/movies/{{review.movieId}}">Back to Movie</a>
 
 <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
@@ -10,10 +10,10 @@
         <p>{{review.description}}</p>   
 
         <!-- Edit button -->
-        <p><a href="/reviews/{{review._id}}/edit">Edit</a></p>
+        <p><a href="/movies/{{review.movieId}}/reviews/{{review._id}}/edit">Edit</a></p>
 
         <!-- Delete button -->
-        <p><form method="POST" action="/reviews/{{review._id}}?_method=DELETE">
+        <p><form method="POST" action="/movies/{{review.movieId}}/reviews/{{review._id}}?_method=DELETE">
             <button type="submit">Delete</button>
         </form></p>
 

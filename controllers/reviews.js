@@ -5,11 +5,11 @@ const Comment = require('../models/comment');
 
 module.exports = function(app) {
 
-    app.get("/reviews/new", (req, res) => {
-        res.render('reviews-new', {});
+    app.get("/movies/:movieId/reviews/new", (req, res) => {
+        res.render('reviews-new', {movieId: req.params.movieId});
     });
 
-    app.get('/reviews/:id', (req, res) => {
+    app.get('/movies/:movieId/reviews/:id', (req, res) => {
         Review.findById(req.params.id).then((review) => {
             Comment.find({ reviewId: req.params.id }).then(comments => {
                 res.render('reviews-show', { review: review, comments: comments})
@@ -19,41 +19,42 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/reviews/:id/edit', function (req, res) {
+    app.get('/movies/:movieId/reviews/:id/edit', function (req, res) {
         Review.findById(req.params.id, function(err, review) {
             res.render('reviews-edit', {review: review});
         })
     })
 
-    app.post('/reviews', (req, res) => {
+    app.post('/movies/:movieId/reviews', (req, res) => {
+        console.log("HELLO")
         Review.create(req.body).then((review) => {
             console.log(review);
-            res.redirect(`/reviews/${review._id}`);
+            res.redirect(`/movies/${review.movieId}/reviews/${review._id}`);
         }).catch((err) => {
             console.log(err.message);
         });
     });
 
-    app.put('/reviews/:id/', (req, res) => {
+    app.put('/movies/:movieId/reviews/:id/', (req, res) => {
         Review.findByIdAndUpdate(req.params.id, req.body)
             .then(review => {
-                res.redirect(`/reviews/${review._id}`);
+                res.redirect(`/movies/${review.movieId}/reviews/${review._id}`);
             })
             .catch(err => {
                  console.log(err.message)
             });
     });
 
-    app.delete('/reviews/:id', function (req, res) {
+    app.delete('/movies/:movieId/reviews/:id', function (req, res) {
         Review.findByIdAndRemove(req.params.id)
             .then((review) => {
-                res.redirect('/');
+                res.redirect(`/movies/${review.movieId}`);
             }).catch((err) => {
                 console.log(err.message);
         });
     });
 
-    app.get('/reviews', (req, res) => {
+    app.get('/movies/:movieId/reviews', (req, res) => {
         Review.find()
         .then(reviews => {
             res.render('reviews-index', {reviews: reviews});
