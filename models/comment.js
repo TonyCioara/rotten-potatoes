@@ -12,6 +12,10 @@ const CommentSchema = new mongoose.Schema ({
     },
     reviewId: {
         type: mongoose.Schema.Types.ObjectId, ref: 'Review'
+    },
+    movieId: {
+        type: String,
+        required: true
     }
 
 });

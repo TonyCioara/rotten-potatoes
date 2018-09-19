@@ -1,7 +1,8 @@
 <!-- comment-form.handlebars -->
 
-<form action="/reviews/comments", method="post">
-    <input type="hidden" value="{{review._id}}" name="reviewId">    
+<form action="/movies/{{review.movieId}}/reviews/{{review._id}}/comments/", method="post">
+    <input type="hidden" value="{{review._id}}" name="reviewId">
+    <input type="hidden" value="{{review.movieId}}" name="movieId">    
     <fieldset>
         <legend>Add a Comment</legend>
         <!-- Title -->
