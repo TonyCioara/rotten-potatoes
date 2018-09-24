@@ -23,9 +23,11 @@
         {{> comment-form}}
 
         <!-- Show Comments -->
-        {{#each comments}}
-            {{> comment}}
-        {{/each}}
+        <div id="comments">
+            {{#each comments}}
+                {{> comment}}
+            {{/each}}
+        </div>
     </div>
 </div>
 

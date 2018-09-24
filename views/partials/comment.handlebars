@@ -7,8 +7,7 @@
         <p class="card-text">{{this.content}}</p>
 
         <!-- Delete link -->
-        <p><form method="POST" action="/movies/{{this.movieId}}/reviews/{{this.reviewId}}/comments/{{this._id}}?_method=DELETE">
-            <button class="btn btn-link" type="submit">Delete</button>
-        </form></p>
+        <button class="btn btn-link delete-comment" id="delete-comment" data-comment-id={{this._id}} data-movie-id={{this.movieId}} data-review-id={{this.reviewId}}>Delete</button>
+        
     </div>
 </div>

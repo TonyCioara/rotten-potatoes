@@ -17,13 +17,13 @@ module.exports = (app) => {
                         movie.trailer_youtube_id = videos.results[0].key;
                     });
                 };
-                console.log("1.")
 
                 Review.find({movieId: req.params.id}).then(reviews => {
+                    console.log("2.")
                     console.log(reviews)
                     res.render('movies-show', {movie: movie, reviews: reviews});
                 }).catch(console.error);
 
-            }).catch(console.error);
+            }).catch(console.error.message);
     });
 };
