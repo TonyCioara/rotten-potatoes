@@ -1,13 +1,13 @@
 
 <!-- comment.handlebars -->
 
-<div class="card">
+<div class="card" id={{this._id}}>
     <div class="card-block">
         <h4 class="card-title">{{this.title}}</h4>
         <p class="card-text">{{this.content}}</p>
 
         <!-- Delete link -->
-        <button class="btn btn-link delete-comment" id="delete-comment" data-comment-id={{this._id}} data-movie-id={{this.movieId}} data-review-id={{this.reviewId}}>Delete</button>
+        <button class="btn btn-link delete-comment" id={{this._id}} data-comment-id={{this._id}} data-movie-id={{this.movieId}} data-review-id={{this.reviewId}}>Delete</button>
         
     </div>
 </div>

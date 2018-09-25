@@ -16,7 +16,7 @@ module.exports = (app) => {
 
     app.delete("/movies/:movieId/reviews/:reviewId/comments/:id", function(req, res) {
         console.log("Delete comment");
-        Comment.findByIdAndRemove(req.params.id).then(comment => {
+        Comment.findOneAndRemove({_id : req.params.id}).then(comment => {
             res.status(200).send(comment);
         }).catch(err => {
             console.log(err.messsage);

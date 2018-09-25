@@ -25,12 +25,12 @@ $(document).ready(() => {
                 // Display the data as a new comment on the page
                 $('#comments').prepend(
                     `
-                    <div class="card">
+                    <div class="card" id=${response.data.comment._id}>
                         <div class="card-block">
                             <h4 class="card-title">${response.data.comment.title}</h4>
                             <p class="card-text">${response.data.comment.content}</p>
                             <p>
-                                <button class="btn btn-link delete-comment" data-movie-id=${response.movieId} data-review-id=${response.reviewId} data-comment-id=${response._id}>Delete</button>
+                                <button class="btn btn-link delete-comment" id=${response.data.comment._id} data-movie-id=${response.data.comment.movieId} data-review-id=${response.data.comment.reviewId} data-comment-id=${response.data.comment._id}>Delete</button>
                             </p>
                         </div>
                     </div>
@@ -41,31 +41,7 @@ $(document).ready(() => {
             });
     });
 
-    document.getElementById("comment").prepend(
-        `
-        <div class="card">
-            <div class="card-block">
-                <h4 class="card-title">${response.title}</h4>
-                <p class="card-text">${response.content}</p>
-                <button class="btn btn-link" id="delete-comment" data-comment-id=${response._id}>Delete</button>
-            </div>
-        </div>
-        `
-    );
-
-    // document.querySelector('.delete-comment').addEventListener('click', (e) => {
-    //     console.log("click");
-    //     let commentId = this.getAttribute('data-comment-id');
-    //     axios.delete(`/reviews/comments/${commentId}`)
-    //         .then(response => {
-    //             console.log(response);
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //         });
-    // });
-
-    document.getElementById('delete-comment').addEventListener('click', function(e) {
+    document.querySelector('.delete-comment').addEventListener('click', function(e) {
         console.log('comment');
         let commentId = this.getAttribute('data-comment-id');
         let movieId = this.getAttribute('data-movie-id');
@@ -73,9 +49,8 @@ $(document).ready(() => {
         console.log(`YOUR ROUTE IS: /movies/${movieId}/reviews/${reviewId}/comments/${commentId}`)
         axios.delete(`/movies/${movieId}/reviews/${reviewId}/comments/${commentId}`)
                 .then(response => {
-                    console.log(response);
+                    console.log("Response: " + response);
                     let comment = document.getElementById(commentId);
-                    
                     comment.parentNode.removeChild(comment);
                 })
                 .catch(error => {
