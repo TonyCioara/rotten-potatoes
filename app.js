@@ -23,6 +23,7 @@ const reviews = require('./controllers/reviews')(app);
 const comments = require('./controllers/comments')(app);
 const movies = require('./controllers/movies')(app);
 
+
 app.listen(process.env.PORT || 3000, function(){
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });

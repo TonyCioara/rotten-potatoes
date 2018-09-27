@@ -19,5 +19,17 @@
     "mongoose": "^5.2.12",
     "moviedb-promise": "^1.2.6",
     "nodemon": "^1.18.4"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TonyCioara/rotten-potatoes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TonyCioara/rotten-potatoes/issues"
+  },
+  "homepage": "https://github.com/TonyCioara/rotten-potatoes#readme"
 }
