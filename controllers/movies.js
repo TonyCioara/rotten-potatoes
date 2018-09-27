@@ -1,5 +1,5 @@
 const MovieDb = require('moviedb-promise');
-const moviedb = new MovieDb('9b163fe1b96985cd9be717ad6b2835b5');
+const moviedb = new MovieDb(process.env.MOVIEDB_API_KEY);
 const Review = require('../models/review');
 
 module.exports = (app) => {
